@@ -70,8 +70,8 @@ def main():
 
     if mode == 'Serveur':
         Serveur2.debut()
-        y = str(Serveur2.choixmap())
         global y
+        y = str(Serveur2.choixmap())
         if y == "map1" : 
             map = map1
         if y == "map2" :
