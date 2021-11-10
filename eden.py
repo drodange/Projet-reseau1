@@ -59,6 +59,14 @@ map3 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
         [ ' ', 'X', ' ', 'X', 'X', 'X', 'X', 'X', 'X', ' ' ],
         [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ] ]
 
+y = str(Serveur2.choixmap())
+if y == "map1" : 
+    map = map1
+if y == "map2" :
+    map = map2
+if y == "map3" :
+    map = map3
+
 def main():
     while True:
         mode = input ("Quel mode : Serveur, Client\n")
@@ -70,17 +78,8 @@ def main():
 
     if mode == 'Serveur':
         Serveur2.debut()
-        global y
-        y = str(Serveur2.choixmap())
-        if y == "map1" : 
-            map = map1
-        if y == "map2" :
-            map = map2
-        if y == "map3" :
-            map = map3
     if mode == 'Client':
         Client2.debut()
-    return y
 main()
 
 
