@@ -76,12 +76,12 @@ map3 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
         [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ] ]
 
 y = Serveur2.choixmap()
-print(y)
-if y == 'map1' : 
+
+if y == map1 : 
     map = map1
-if y == 'map2' :
+if y == map2 :
     map = map2
-if y == 'map3' :
+if y == map3 :
     map = map3
 
 
