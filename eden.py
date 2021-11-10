@@ -69,7 +69,7 @@ def main():
 
     if mode == 'Serveur':
         Serveur2.debut()
-        y = str(Serveur2.choixmap())
+        y = Serveur2.choixmap()
         map = None
         if y == "map1" : 
             map = map1
