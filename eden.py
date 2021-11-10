@@ -75,13 +75,13 @@ map3 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
         [ ' ', 'X', ' ', 'X', 'X', 'X', 'X', 'X', 'X', ' ' ],
         [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ] ]
 
-y = Serveur2.choixmap()
+y = str(Serveur2.choixmap())
 
-if y == map1 : 
+if y == "map1" : 
     map = map1
-if y == map2 :
+if y == "map2" :
     map = map2
-if y == map3 :
+if y == "map3" :
     map = map3
 
 
