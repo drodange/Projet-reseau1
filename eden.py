@@ -69,21 +69,20 @@ def main():
 
     if mode == 'Serveur':
         Serveur2.debut()
-        y = Serveur2.choixmap()
-        map = None
-        if y == "map1" : 
-            map = map1
-        if y == "map2" :
-            map = map2
-        if y == "map3" :
-            map = map3
     if mode == 'Client':
         Client2.debut()
-        time.sleep(15)
+        time.sleep(10)
     return map  
     
 main()
 
+y = str(Serveur2.choixmap())
+if y == "map1" : 
+    map = map1
+if y == "map2" :
+    map = map2
+if y == "map3" :
+    map = map3
 
 width = len(map[0])
 height = len(map)
