@@ -44,7 +44,7 @@ def main():
     if mode == 'Client':
         Client2.debut()
 
-main()
+
 
 
 
