@@ -82,7 +82,7 @@ def main():
     if mode == 'Client':
         Client2.debut()
         time.sleep(10) 
-
+        #Il faut que le client recoive l'info de la map, terminal client ne passe pas par if mode == "Serveur"
 main()
 
 
