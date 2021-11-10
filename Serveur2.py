@@ -40,12 +40,6 @@ def debut():
 def choixmap():
     m=input("Quel map : map1 , map2 , map3 ?")
     return m
-    
-def send(x):
-    for k in listeclient:
-        if k == sc:
-            k.send(str(x))
-
 
 
 
