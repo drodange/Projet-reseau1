@@ -4,7 +4,7 @@ import socket
 import select
 import time
 
-listeclient = []]
+listeclient = []
 Serveur = None
 sc = None
 
@@ -37,11 +37,9 @@ def debut():
 
 
 
-def choixmap(maps):
-    for gertrude in listeclient:
-        if gertrude == sc:
-            gertrude.send(input("Quel map : map1 , map2 , map3 ?"))
-
+def choixmap():
+    m=input("Quel map : map1 , map2 , map3 ?")
+    return m
     
 
 
