@@ -30,22 +30,6 @@ import pygame
 import Client2
 import Serveur2
 
-def main():
-    while True:
-        mode = input ("Quel mode : Serveur, Client\n")
-        if mode == 'Serveur' or 'Client':
-            break
-        else:
-            print("Mode invalide")
-            sys.exit()
-
-    if mode == 'Serveur':
-        Serveur2.debut()
-    if mode == 'Client':
-        Client2.debut()
-
-
-
 
 
 map1 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
@@ -75,14 +59,29 @@ map3 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
         [ ' ', 'X', ' ', 'X', 'X', 'X', 'X', 'X', 'X', ' ' ],
         [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ] ]
 
-y = str(Serveur2.choixmap())
+def main():
+    while True:
+        mode = input ("Quel mode : Serveur, Client\n")
+        if mode == 'Serveur' or 'Client':
+            break
+        else:
+            print("Mode invalide")
+            sys.exit()
 
-if y == "map1" : 
-    map = map1
-if y == "map2" :
-    map = map2
-if y == "map3" :
-    map = map3
+    if mode == 'Serveur':
+        Serveur2.debut()
+        y = str(Serveur2.choixmap())
+        if y == "map1" : 
+            map = map1
+        if y == "map2" :
+            map = map2
+        if y == "map3" :
+            map = map3
+    if mode == 'Client':
+        Client2.debut()
+    return y
+main()
+
 
 
 width = len(map[0])
