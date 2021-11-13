@@ -30,6 +30,7 @@ import time
 import Client2
 import Serveur2
 
+map = None
 
 map1 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
         [ ' ', 'X', 'X', 'X', 'X', 'X', 'X', ' ', 'X', ' ' ],
