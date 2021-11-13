@@ -5,7 +5,7 @@ import select
 
 Clientsock = None
 
-persos = ['Woman','Man','Snake']
+persos = [Woman,Man,Snake]
 
 def debut():
     global Clientsock
