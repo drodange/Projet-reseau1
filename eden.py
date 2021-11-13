@@ -80,6 +80,7 @@ def main():
         if y == "map3" :
             map = map3
         Serveur2.envoi(y)
+        #Le serveur envoie son choix de map au client
     if mode == 'Client':
         Client2.debut()
         time.sleep(10) 
@@ -90,7 +91,7 @@ def main():
             map = map2
         if msg.decode() == "map3" :
             map = map3
-        #Il faut que le client recoive l'info de la map, terminal client ne passe pas par if mode == "Serveur"
+       #Le Client reçoit l'info de la map choisit par le serveur avant. Le time.sleep() permet de laisser du temps au serveur pour le choix
 main()
 
 
@@ -147,6 +148,8 @@ def init():
     find(apple_coords, 'A')
 
 init()
+
+
 
 while True:
     e = pygame.event.wait()
