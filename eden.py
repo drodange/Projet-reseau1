@@ -31,6 +31,7 @@ import Client2
 import Serveur2
 
 map = None
+t = None
 
 map1 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
         [ ' ', 'X', 'X', 'X', 'X', 'X', 'X', ' ', 'X', ' ' ],
@@ -61,6 +62,7 @@ map3 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
 
 def main():
     global map
+    global t
     while True:
         mode = input ("Quel mode : Serveur, Client\n")
         if mode == 'Serveur' or 'Client':
@@ -82,7 +84,7 @@ def main():
         time.sleep(10)
         msg = Serveur2.sc.recv(1024)
         x = msg.decode()
-        t = input("Quel personnage :" , x )
+        t = input("Quel personnage :" + 'x' )
         print(t)
     if mode == 'Client':
         Client2.debut()
