@@ -83,7 +83,8 @@ def main():
     if mode == 'Client':
         Client2.debut()
         time.sleep(10) 
-        Client2.Clientsock.recv(1024)
+        msg = Client2.Clientsock.recv(1024)
+        map = msg.decode()
         #Il faut que le client recoive l'info de la map, terminal client ne passe pas par if mode == "Serveur"
 main()
 
