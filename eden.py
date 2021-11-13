@@ -189,7 +189,7 @@ while True:
             elif e.key == pygame.K_RIGHT:
                 man_move = [ 1, 0 ]
                 pass
-        if x == 'Snake'
+        if x == 'Snake':
             #Snake move
             if e.key == pygame.K_o:
                 snake_move = [ 0, -1 ]
