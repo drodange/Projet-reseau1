@@ -82,6 +82,7 @@ def main():
         Serveur2.envoi(y)
     if mode == 'Client':
         Client2.debut()
+        Client2.Client.recv(1024)
         time.sleep(10) 
         #Il faut que le client recoive l'info de la map, terminal client ne passe pas par if mode == "Serveur"
 main()
