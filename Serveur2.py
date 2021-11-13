@@ -18,27 +18,19 @@ def debut():
     global listeclient
     global sc
 
-    while len(listeclient) < 1:
+    while len(listeclient) < 1: #Ici on à mit 1 pour que la boucle s'arrête quand un client se connecte , dans le cas simple d'un serveur et d'un client.
         a, b, c = select.select (listeclient + [Serveur], [], [])
         for i in a:
             actions = False
             sc, addr = Serveur.accept()
             print("New Client", addr)
-            if i == Serveur:
-                listeclient.append(sc)
-            elif actions == False:
-                break
-            else:
-                msg = sc.recv (1024)
+            
                     
-                if msg == b'':
-                    listeclient.remove (sc)
-                    sc.close ()
-                    
-    
-def envoi(data):
+#Fonction d'envoi de données simple.    
+def envoi(data): 
     sc.send(data.encode())
 
+#Fonction pour le choix de la map.
 def choixmap():
     m=input("Quel map : map1 , map2 , map3 ?")
     return m
