@@ -94,7 +94,7 @@ def main():
         if msg.decode() == "map3" :
             map = map3
         x = Client2.choixperso()
-        Client2.envoi2(x)
+#        Client2.envoi2(x)
         t = x[1]
         print(t)
 main()
