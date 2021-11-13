@@ -26,7 +26,6 @@
 
 import sys
 import pygame
-import sockettest
 import Client2
 import Serveur2
 
