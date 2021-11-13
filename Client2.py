@@ -14,15 +14,6 @@ def debut():
     socketlist = []
     Clientsock.connect(("127.0.0.1" , 7777))
     
-
-def suite():
-    while actions:
-        a2,b2,c2 = select.select(socketlist+[Clientsock],[],[])
-        for i in a2:
-            sc , ip = Clientsock.accept()
-            if i == Clientsock:
-                socketlist.append(sc)
-
 #Envoi de données simple pour le client.
 def envoi2(data):
     Clientsock.send(data.encode())
