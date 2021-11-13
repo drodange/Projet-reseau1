@@ -29,3 +29,12 @@ def suite():
                     socketlist.remove(sc)
                     sc.close()
 
+def envoi2(data):
+    Clientsock.send(data.encode())
+
+def choixperso():
+    p = input("Quel personnage : Woman , Man , Snake ?")
+    for i in persos:
+        if p == persos[i]:
+            persos.remove(p)
+    return (p , persos)
