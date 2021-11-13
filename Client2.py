@@ -7,11 +7,12 @@ Clientsock = None
 
 
 def debut():
+    global Clientsock
     Clientsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     actions = 1
     socketlist = []
     Clientsock.connect(("127.0.0.1" , 7777))
-    global Clientsock
+    
 
 def suite():
     while actions:
