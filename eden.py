@@ -79,6 +79,7 @@ def main():
             map = map2
         if y == "map3" :
             map = map3
+        Serveur2.envoi(y)
     if mode == 'Client':
         Client2.debut()
         if Serveur2.receive() == 'map3':
