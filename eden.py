@@ -60,6 +60,7 @@ map3 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
         [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ] ]
 
 def main():
+    global map
     while True:
         mode = input ("Quel mode : Serveur, Client\n")
         if mode == 'Serveur' or 'Client':
