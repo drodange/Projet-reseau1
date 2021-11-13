@@ -102,7 +102,7 @@ def main():
             map = map2
         if msg.decode() == "map3" :
             map = map3
-        x = Client2.choixperso()  #On lance le choix du personnage en premier chez le client.
+        x = Client2.choixperso()  #On lance le choix du personnage en premier chez le client avec la fonction choixperso de Client2.
         t = x[0] # On récupère le personnage que le client à choisit ( la valeur de p dans le return )
         x2 = x[1] # On affecte à x2 la deuxième partie de x ( les personnages restants )
         Client2.envoi2(str(x2)) # On envoie la liste des personnages restants 
