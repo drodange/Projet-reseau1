@@ -83,7 +83,7 @@ def main():
         #Le serveur envoie son choix de map au client
         time.sleep(10)
         msg = Serveur2.sc.recv(1024)
-        print(msg)
+        print(msg.decode())
         
     if mode == 'Client':
         Client2.debut()
