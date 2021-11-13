@@ -34,15 +34,13 @@ def debut():
                 if msg == b'':
                     listeclient.remove (sc)
                     sc.close ()
-
-print(listeclient, sc)
                     
 def receive():
     msg = sc.recv(1024)
     return msg
     
 def envoi(data):
-    Serveur.sendall(b'data')
+    sc.send(b'data')
 
 def choixmap():
     m=input("Quel map : map1 , map2 , map3 ?")
