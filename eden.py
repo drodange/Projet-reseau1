@@ -93,9 +93,9 @@ def main():
             map = map2
         if msg.decode() == "map3" :
             map = map3
-        x = str(Client2.choixperso())
+        x = Client2.choixperso()
         Client2.envoi2(x)
-        t = x[2]
+        t = x[1]
         print(t)
 main()
 
