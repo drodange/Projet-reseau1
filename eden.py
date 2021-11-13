@@ -177,7 +177,7 @@ while True:
 
         if x == 'Man':
             # Check for man movements    
-            elif e.key == pygame.K_UP:
+            if e.key == pygame.K_UP:
                 man_move = [ 0, -1 ]
                 pass
             elif e.key == pygame.K_DOWN:
@@ -191,7 +191,7 @@ while True:
                 pass
         if x == 'Snake'
             #Snake move
-            elif e.key == pygame.K_o:
+            if e.key == pygame.K_o:
                 snake_move = [ 0, -1 ]
                 pass
             elif e.key == pygame.K_l:
