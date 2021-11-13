@@ -35,7 +35,8 @@ def debut():
                     listeclient.remove (sc)
                     sc.close ()
 
-
+print(listeclient, sc)
+                    
 def receive():
     msg = sc.recv(1024)
     return msg
