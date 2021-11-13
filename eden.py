@@ -84,8 +84,12 @@ def main():
         Client2.debut()
         time.sleep(10) 
         msg = Client2.Clientsock.recv(1024)
-        map = msg.decode()
-        print(map)
+        if msg.decode() == "map1" : 
+            map = map1
+        if msg.decode() == "map2" :
+            map = map2
+        if msg.decode() == "map3" :
+            map = map3
         #Il faut que le client recoive l'info de la map, terminal client ne passe pas par if mode == "Serveur"
 main()
 
