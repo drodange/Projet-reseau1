@@ -35,7 +35,7 @@ def envoi2(data):
 
 def choixperso():
     p = input("Quel personnage : Woman , Man , Snake ?")
-    for i in persos:
+    for i in len(persos):
         if p == persos[i]:
             persos.remove(p)
     return (p , persos)
