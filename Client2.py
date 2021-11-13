@@ -20,22 +20,17 @@ def suite():
         a2,b2,c2 = select.select(socketlist+[Clientsock],[],[])
         for i in a2:
             sc , ip = Clientsock.accept()
-            if actions == False:
-                break
-            elif i == Clientsock:
+            if i == Clientsock:
                 socketlist.append(sc)
-            else:
-                msgclient = sc.recv(1024)
-                if msgclient == '':
-                    socketlist.remove(sc)
-                    sc.close()
 
+#Envoi de données simple pour le client.
 def envoi2(data):
     Clientsock.send(data.encode())
 
+#Fonction pour le choix des personnages.
 def choixperso():
     p = input("Quel personnage : Woman , Man , Snake ?")
     for i in persos:
         if p == i:
-            persos.remove(p)
-    return (p , persos)
+            persos.remove(p) #On enlève le personnage choisi par le client.
+    return (p , persos) #On retourne le personnage choisi par le client et la liste des personnages restants.
