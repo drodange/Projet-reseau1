@@ -26,10 +26,50 @@
 
 import sys
 import pygame
-# import sockettest
+import sockettest
 import Client2
 import Serveur2
-import time
+
+def main():
+    while True:
+        mode = input ("Quel mode : Serveur, Client\n")
+        if mode == 'Serveur' or 'Client':
+            break
+        else:
+            print("Mode invalide")
+            sys.exit()
+
+    if mode == 'Serveur':
+        Serveur2.debut()
+        y = str(Serveur2.choixmap())
+        if y == "map1" : 
+            map = map1
+        if y == "map2" :
+            map = map2
+        if y == "map3" :
+            map = map3
+        Serveur2.envoi(y)
+        time.sleep(10)
+        msg = Serveur2.sc.recv(1024)
+        t = msg.decode()
+        x = t[0]
+        print(x)
+    if mode == 'Client':
+        Client2.debut()
+        time.sleep(10) 
+        msg = Client2.Clientsock.recv(1024)
+        if msg.decode() == "map1" : 
+            map = map1
+        if msg.decode() == "map2" :
+            map = map2
+        if msg.decode() == "map3" :
+            map = map3
+        x = str(Client2.choixperso())
+        Client2.envoi2(x)
+
+main()
+
+
 
 map1 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
         [ ' ', 'X', 'X', 'X', 'X', 'X', 'X', ' ', 'X', ' ' ],
@@ -57,51 +97,6 @@ map3 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
         [ ' ', 'X', ' ', 'X', ' ', 'A', ' ', ' ', 'X', ' ' ],
         [ ' ', 'X', ' ', 'X', 'X', 'X', 'X', 'X', 'X', ' ' ],
         [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ] ]
-
-map = None
-
-def main():
-    global map
-    while True:
-        mode = input ("Quel mode : Serveur, Client\n")
-        if mode == 'Serveur' or 'Client':
-            break
-        else:
-            print("Mode invalide")
-            sys.exit()
-
-    if mode == 'Serveur':
-        Serveur2.debut()
-        y = str(Serveur2.choixmap())
-        if y == "map1" : 
-            map = map1
-        if y == "map2" :
-            map = map2
-        if y == "map3" :
-            map = map3
-        Serveur2.envoi(y)
-        #Le serveur envoie son choix de map au client
-        time.sleep(10)
-        msg = Serveur2.sc.recv(1024)
-        t = msg.decode()
-        x = t[0]
-        print(x)
-    if mode == 'Client':
-        Client2.debut()
-        time.sleep(10) 
-        msg = Client2.Clientsock.recv(1024)
-        if msg.decode() == "map1" : 
-            map = map1
-        if msg.decode() == "map2" :
-            map = map2
-        if msg.decode() == "map3" :
-            map = map3
-       #Le Client reçoit l'info de la map choisit par le serveur avant. Le time.sleep() permet de laisser du temps au serveur pour le choix
-        x = str(Client2.choixperso())
-        Client2.envoi2(x)
-
-main()
-
 
 width = len(map[0])
 height = len(map)
@@ -157,8 +152,6 @@ def init():
 
 init()
 
-
-
 while True:
     e = pygame.event.wait()
 
@@ -168,47 +161,49 @@ while True:
 
     elif e.type == pygame.KEYDOWN:
 
+        if x == 'Woman':
     # Check for wowoman movements
-        if e.key == pygame.K_z:
-            woman_move = [ 0, -1 ]
-            pass
-        elif e.key == pygame.K_s:
-            woman_move = [ 0, 1 ]
-            pass
-        elif e.key == pygame.K_q:
-            woman_move = [ -1, 0 ]
-            pass
-        elif e.key == pygame.K_d:
-            woman_move = [ 1, 0 ]
-            pass
+            if e.key == pygame.K_z:
+                woman_move = [ 0, -1 ]
+                pass
+            elif e.key == pygame.K_s:
+                woman_move = [ 0, 1 ]
+                pass
+            elif e.key == pygame.K_q:
+                woman_move = [ -1, 0 ]
+                pass
+            elif e.key == pygame.K_d:
+                woman_move = [ 1, 0 ]
+                pass
 
-        # Check for man movements
-        elif e.key == pygame.K_UP:
-            man_move = [ 0, -1 ]
-            pass
-        elif e.key == pygame.K_DOWN:
-            man_move = [ 0, 1 ]
-            pass
-        elif e.key == pygame.K_LEFT:
-            man_move = [ -1, 0 ]
-            pass
-        elif e.key == pygame.K_RIGHT:
-            man_move = [ 1, 0 ]
-            pass
-
-        #Snake move
-        elif e.key == pygame.K_o:
-            snake_move = [ 0, -1 ]
-            pass
-        elif e.key == pygame.K_l:
-            snake_move = [ 0, 1 ]
-            pass
-        elif e.key == pygame.K_k:
-            snake_move = [ -1, 0 ]
-            pass
-        elif e.key == pygame.K_m:
-            snake_move = [ 1, 0 ]
-            pass
+        if x == 'Man':
+            # Check for man movements    
+            elif e.key == pygame.K_UP:
+                man_move = [ 0, -1 ]
+                pass
+            elif e.key == pygame.K_DOWN:
+                man_move = [ 0, 1 ]
+                pass
+            elif e.key == pygame.K_LEFT:
+                man_move = [ -1, 0 ]
+                pass
+            elif e.key == pygame.K_RIGHT:
+                man_move = [ 1, 0 ]
+                pass
+        if x == 'Snake'
+            #Snake move
+            elif e.key == pygame.K_o:
+                snake_move = [ 0, -1 ]
+                pass
+            elif e.key == pygame.K_l:
+                snake_move = [ 0, 1 ]
+                pass
+            elif e.key == pygame.K_k:
+                snake_move = [ -1, 0 ]
+                pass
+            elif e.key == pygame.K_m:
+                snake_move = [ 1, 0 ]
+                pass
 
         #else:
         #    print(e)
