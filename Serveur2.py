@@ -42,7 +42,7 @@ def receive():
     return msg
     
 def envoi(data):
-    Serveur.sendall(data)
+    Serveur.sendall(b'data')
 
 def choixmap():
     m=input("Quel map : map1 , map2 , map3 ?")
