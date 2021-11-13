@@ -95,7 +95,8 @@ def main():
             map = map3
         x = str(Client2.choixperso())
         Client2.envoi2(x)
-
+        t = x[1]
+        print(t)
 main()
 
 
