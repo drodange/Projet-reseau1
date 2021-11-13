@@ -37,7 +37,7 @@ def debut():
                     
     
 def envoi(data):
-    sc.send(b'data')
+    sc.send(data.encode())
 
 def choixmap():
     m=input("Quel map : map1 , map2 , map3 ?")
