@@ -82,7 +82,8 @@ def main():
         time.sleep(10)
         msg = Serveur2.sc.recv(1024)
         x = msg.decode()
-        print(x)
+        t = input("Quel personnage :" , x )
+        print(t)
     if mode == 'Client':
         Client2.debut()
         time.sleep(10) 
@@ -93,10 +94,10 @@ def main():
             map = map2
         if msg.decode() == "map3" :
             map = map3
-        x = Client2.choixperso()
-#        Client2.envoi2(x)
+        x = Client2.choixperso()  
         t = x[0]
-        print(t)
+        x2 = x[1]
+        Client2.envoi2(str(x2))
 main()
 
 
@@ -163,7 +164,7 @@ while True:
 
     elif e.type == pygame.KEYDOWN:
 
-        if x == 'Woman':
+        if t == 'Woman':
     # Check for wowoman movements
             if e.key == pygame.K_z:
                 woman_move = [ 0, -1 ]
@@ -178,7 +179,7 @@ while True:
                 woman_move = [ 1, 0 ]
                 pass
 
-        if x == 'Man':
+        if t == 'Man':
             # Check for man movements    
             if e.key == pygame.K_UP:
                 man_move = [ 0, -1 ]
@@ -192,7 +193,7 @@ while True:
             elif e.key == pygame.K_RIGHT:
                 man_move = [ 1, 0 ]
                 pass
-        if x == 'Snake':
+        if t == 'Snake':
             #Snake move
             if e.key == pygame.K_o:
                 snake_move = [ 0, -1 ]
