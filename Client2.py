@@ -3,7 +3,7 @@
 import socket
 import select
 
-
+Clientsock = None
 
 
 def debut():
@@ -11,6 +11,7 @@ def debut():
     actions = 1
     socketlist = []
     Clientsock.connect(("127.0.0.1" , 7777))
+    global Clientsock
 
 def suite():
     while actions:
