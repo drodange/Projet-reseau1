@@ -36,6 +36,12 @@ def debut():
                     sc.close ()
 
 
+def receive():
+    msg = sc.recv(1024)
+    return msg
+    
+def envoi(data):
+    Serveur.sendall(data)
 
 def choixmap():
     m=input("Quel map : map1 , map2 , map3 ?")
