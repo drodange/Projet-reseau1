@@ -28,6 +28,7 @@ import sys
 import pygame
 import Client2
 import Serveur2
+import time
 
 def main():
     while True:
