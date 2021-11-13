@@ -84,9 +84,7 @@ def main():
         time.sleep(10)
         msg = Serveur2.sc.recv(1024)
         x = msg.decode()
-        print(x)
         t = input("Quel personnage : %s" %x )
-        print(t)
     if mode == 'Client':
         Client2.debut()
         time.sleep(10) 
