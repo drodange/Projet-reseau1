@@ -10,8 +10,7 @@ persos = ['Woman','Man','Snake']
 def debut():
     global Clientsock
     Clientsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    actions = 1
-    socketlist = []
+    Clientsock.settimeout(10)
     Clientsock.connect(("127.0.0.1" , 7777))
     
 #Envoi de données simple pour le client.
