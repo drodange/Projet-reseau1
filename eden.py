@@ -183,7 +183,7 @@ while True:
                 pass
             data = pickle.dumps(woman_move)
             Client2.Clientsock.send(data)
-            pickle.loads(Client2.Clientsock.recv(1024))
+            man_move=pickle.loads(Client2.Clientsock.recv(1024))
         
         if t == 'Man':
             # Check for man movements    
@@ -201,7 +201,7 @@ while True:
                 pass
             data = pickle.dumps(man_move)
             Serveur2.sc.send(data)
-            pickle.loads(Serveur2.sc.recv(1024))
+            woman_move=pickle.loads(Serveur2.sc.recv(1024))
             
         if t == 'Snake':
             #Snake move
