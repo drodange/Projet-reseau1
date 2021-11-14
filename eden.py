@@ -292,7 +292,7 @@ while True:
     blit(apple, apple_coords)
     if t == 'Woman':
         blit(woman_ghost, woman_newcoords)
-        data = pickle.dumps(blit(woman_ghost, woman_newcoords)
+        data = pickle.dumps(blit(woman_ghost, woman_newcoords))
         Client2.Clientsock.send(data)
         pickle.loads(Client2.Clientsock.recv(1024))
     blit(woman, woman_coords)
