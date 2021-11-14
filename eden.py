@@ -260,7 +260,7 @@ while True:
         man_move = [ 0, 0 ]
 
         # Make everybody move when everybody chose her/his direction
-    if woman_move != [ 0, 0 ] or man_move != [ 0, 0 ]: # and snake_move != [ 0, 0 ]:
+    if woman_move != [ 0, 0 ] and man_move != [ 0, 0 ]: # and snake_move != [ 0, 0 ]:
         woman_coords = woman_newcoords
         man_coords = man_newcoords
         snake_coords = snake_newcoords
