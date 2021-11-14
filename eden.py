@@ -220,13 +220,13 @@ while True:
         return [ coords[0] + move[0], coords[1] + move[1] ]
 
         # Compute moves
-    if t = 'Woman':
+    if t == 'Woman':
         woman_newcoords = move(woman_coords, woman_move)
         data = pickle.dumps(woman_newcoords)
         Client2.envoi2(data)
         y = pickle.loads(Serveur2.sc.recv(1024))
         print(y)
-    if t = 'Man':
+    if t == 'Man':
         man_newcoords = move(man_coords, man_move)
         data = pickle.dumps(man_newcoords)
         Serveur2.envoi(data)
