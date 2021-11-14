@@ -26,11 +26,11 @@ def debut():
             print("New Client", addr)
             
                     
-#Fonction d'envoi de données simple.    
+ 
 def envoi(data): 
     sc.send(data.encode())
 
-#Fonction pour le choix de la map.
+
 def choixmap():
     m=input("Quel map : map1 , map2 , map3 ?")
     return m
