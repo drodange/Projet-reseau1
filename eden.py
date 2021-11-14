@@ -299,7 +299,7 @@ while True:
     blit(woman_ghost, woman_newcoords)
     blit(woman, woman_coords)
     blit(man_ghost, man_newcoords)
-
+    blit(man, man_coords)
     blit(snake_ghost, snake_newcoords)
     blit(snake, snake_coords)
 
