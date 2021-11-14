@@ -29,7 +29,7 @@ def eden_host(): # fonction lancement socket
         socket_host.bind((sys.argv[1], int(sys.argv[2])))
         socket_host.listen(5)
         eden_serv()
-        #time.sleep(2)
+        time.sleep(2)
         #eden_connect_serv()
 
     else: # CLIENT : connexion avec ip/port
@@ -61,15 +61,29 @@ def eden_connect_argv(): # fonction de connexion du CLIENT
 
     socket_host.connect((list_host[0], int(list_host[1])))
 
-def eden_connect_serv(): # test de connexion inter-serveur
+#def eden_connect_serv(): # test de connexion inter-serveur
 
-    for ipport in list_addr:
+#    for ipport in list_addr:
 
-        socket_host.connect(ipport)
+#        socket_host.connect(ipport)
 
 def eden_send_recv(data): # gestion de l'envoi de données
 
-    if data != "":
+    if data == "recv": # on reçoit les données
+
+        list_socket_read, list_socket_write, useless2 = select.select(list_players_read + [socket_host], list_players_write, list_none2)
+
+        for sock_read in list_socket_read:
+
+            data_recv = sock_read.recv(1024)
+            data_recv = data_recv.decode("utf-8")
+            if data_recv != "":
+                #print(data)
+                return data_recv # ne fonctionne pas avec plus de 2 joueurs
+            else:
+                break
+
+    else:
 
         if len(list_host) == 0: # le serveur envoi
 
@@ -86,30 +100,4 @@ def eden_send_recv(data): # gestion de l'envoi de données
             data = str(data)
             data = data.encode("utf-8")
             socket_host.sendall(data)
-
-    else:
-
-        if len(list_host) == 0: # le SERVEUR reçoit
-
-            list_socket_read, list_socket_write, useless2 = select.select(list_players_read + [socket_host], list_players_write, list_none2)
-
-            for sock_read in list_socket_read:
-
-                data = sock_read.recv(4096)
-                data = data.decode("utf-8")
-                if data != "":
-                    #print(data)
-                    return data # ne fonctionne pas avec plus de 2 joueurs
-
-        else: # le CIENT reçoit
-
-            data = socket_host.recv(4096)
-            data = data.decode("utf-8")
-            if data != "":
-                #print(data)
-                return data
            
-    
-    
-#class eden:
-
