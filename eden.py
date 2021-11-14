@@ -85,7 +85,7 @@ def main():
         time.sleep(10) 
         msg = Serveur2.sc.recv(1024)
         x = msg.decode()
-        t = input("Quel personnage : %s" %x ) 
+        t = input("Quel personnage : %s\n" %x ) 
     
     #Coté Client
     if mode == 'Client':
