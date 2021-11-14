@@ -221,7 +221,7 @@ while True:
         # Compute moves
     woman_newcoords = move(woman_coords, woman_move)
     man_newcoords = move(man_coords, man_move)
-    #snake_newcoords = move(snake_coords, snake_move)
+    snake_newcoords = move(snake_coords, snake_move)
 
         # But bound to window
     def bound(newcoords, coords, move):
@@ -257,13 +257,19 @@ while True:
         man_move = [ 0, 0 ]
 
         # Make everybody move when everybody chose her/his direction
-    if woman_move != [ 0, 0 ] and man_move != [ 0, 0 ] and snake_move != [ 0, 0 ]:
-        woman_coords = woman_newcoords
-        man_coords = man_newcoords
-        snake_coords = snake_newcoords
+    if woman_move != [ 0, 0 ] and man_move != [ 0, 0 ] # and snake_move != [ 0, 0 ]:
+        if t == 'Woman': 
+            woman_coords = woman_newcoords
+            Client2.envoi2(woman_coords)
+            Serveur2.sc.recv(1024)
+        if t == 'Man':
+            man_coords = man_newcoords
+            Serveur2.envoi(man_coords)
+            Client2.Clientsock.recv(1024)
+        #snake_coords = snake_newcoords
         woman_move = [ 0, 0 ]
         man_move = [ 0, 0 ]
-        snake_move = [ 0, 0 ]
+        #snake_move = [ 0, 0 ]
 
         #print("woman at %u,%u to %u,%u" % (woman_coords[0], woman_coords[1], woman_newcoords[0], woman_newcoords[1]))
         #print("man at %u,%u to %u,%u" % (man_coords[0], man_coords[1], man_newcoords[0], man_newcoords[1]))
