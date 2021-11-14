@@ -293,8 +293,8 @@ while True:
     blit(man_ghost, man_newcoords)
     blit(man, man_coords)
 
-#    blit(snake_ghost, snake_newcoords)
-#    blit(snake, snake_coords)
+    blit(snake_ghost, snake_newcoords)
+    blit(snake, snake_coords)
 
         # Show new state
     pygame.display.flip()
