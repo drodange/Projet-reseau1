@@ -221,7 +221,7 @@ while True:
         # Compute moves
     woman_newcoords = move(woman_coords, woman_move)
     man_newcoords = move(man_coords, man_move)
-    snake_newcoords = move(snake_coords, snake_move)
+    #snake_newcoords = move(snake_coords, snake_move)
 
         # But bound to window
     def bound(newcoords, coords, move):
@@ -289,8 +289,8 @@ while True:
     blit(man_ghost, man_newcoords)
     blit(man, man_coords)
 
-#    blit(snake_ghost, snake_newcoords)
-#    blit(snake, snake_coords)
+    blit(snake_ghost, snake_newcoords)
+    blit(snake, snake_coords)
 
         # Show new state
     pygame.display.flip()
