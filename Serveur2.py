@@ -33,7 +33,7 @@ def envoi(data):
 
 
 def choixmap():
-    m=input("Quel map : map1 , map2 , map3 ?")
+    m=input("Quel map : map1 , map2 , map3 ?\n")
     return m
 
 
