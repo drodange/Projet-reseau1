@@ -181,7 +181,10 @@ while True:
             elif e.key == pygame.K_d:
                 woman_move = [ 1, 0 ]
                 pass
-
+            data = pickle.dumps(woman_move)
+            Client2.Clientsock.send(data)
+            pickle.loads(Client2.Clientsock.recv(1024))
+        
         if t == 'Man':
             # Check for man movements    
             if e.key == pygame.K_UP:
@@ -196,6 +199,10 @@ while True:
             elif e.key == pygame.K_RIGHT:
                 man_move = [ 1, 0 ]
                 pass
+            data = pickle.dumps(man_move)
+            Serveur2.sc.send(data)
+            pickle.loads(Serveur2.sc.recv(1024))
+            
         if t == 'Snake':
             #Snake move
             if e.key == pygame.K_o:
@@ -288,18 +295,10 @@ while True:
 
         # Display moving items
     blit(apple, apple_coords)
-    if t == 'Woman':
-        blit(woman_ghost, woman_newcoords)
-        data = pickle.dumps(blit(woman_ghost, woman_newcoords))
-        Client2.Clientsock.send(data)
-        pickle.loads(Client2.Clientsock.recv(1024))
+
+    blit(woman_ghost, woman_newcoords)
     blit(woman, woman_coords)
-    if t == 'Man':
-        blit(man_ghost, man_newcoords)
-        data = pickle.dumps(blit(man_ghost, man_newcoords))
-        Serveur2.sc.send(data)
-        pickle.loads(Serveur2.sc.recv(1024))
-    blit(man, man_coords)
+    blit(man_ghost, man_newcoords)
 
     blit(snake_ghost, snake_newcoords)
     blit(snake, snake_coords)
