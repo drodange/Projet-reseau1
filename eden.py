@@ -220,20 +220,8 @@ while True:
         return [ coords[0] + move[0], coords[1] + move[1] ]
 
         # Compute moves
-    if t == 'Woman':
-        woman_newcoords = move(woman_coords, woman_move)
-        data = pickle.dumps(woman_newcoords)
-        Client2.Clientsock.send(data)
-        time.sleep(5)
-        y = pickle.loads(Serveur2.sc.recv(1024))
-        print(y)
-    if t == 'Man':
-        man_newcoords = move(man_coords, man_move)
-        data = pickle.dumps(man_newcoords)
-        Serveur2.sc.send(data)
-        time.sleep(5)
-        y = pickle.loads(Client2.Clientsock.recv(1024))
-        print(y)
+    woman_newcoords = move(woman_coords, woman_move)
+    man_newcoords = move(man_coords, man_move)
     snake_newcoords = move(snake_coords, snake_move)
 
         # But bound to window
