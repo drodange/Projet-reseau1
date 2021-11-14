@@ -18,7 +18,7 @@ def debut():
     global listeclient
     global sc
 
-    while len(listeclient) < 1: #Ici on à mit 1 pour que la boucle s'arrête quand un client se connecte , dans le cas simple d'un serveur et d'un client.
+    while len(listeclient) < 1:
         a, b, c = select.select (listeclient + [Serveur], [], [])
         for i in a:
             actions = False
