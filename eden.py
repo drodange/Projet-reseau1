@@ -29,6 +29,7 @@ import pygame
 import time
 import Client2
 import Serveur2
+import pickle
 
 map = None
 t = None
@@ -219,8 +220,18 @@ while True:
         return [ coords[0] + move[0], coords[1] + move[1] ]
 
         # Compute moves
-    woman_newcoords = move(woman_coords, woman_move)
-    man_newcoords = move(man_coords, man_move)
+    if t = 'Woman':
+        woman_newcoords = move(woman_coords, woman_move)
+        data = pickle.dumps(woman_newcoords)
+        Client2.envoi2(data)
+        y = pickle.loads(Serveur2.sc.recv(1024))
+        print(y)
+    if t = 'Man':
+        man_newcoords = move(man_coords, man_move)
+        data = pickle.dumps(man_newcoords)
+        Serveur2.envoi(data)
+        y = pickle.loads(Client2.Clientsock.recv(1024))
+        print(y)
     snake_newcoords = move(snake_coords, snake_move)
 
         # But bound to window
@@ -258,18 +269,12 @@ while True:
 
         # Make everybody move when everybody chose her/his direction
     if woman_move != [ 0, 0 ] or man_move != [ 0, 0 ]: # and snake_move != [ 0, 0 ]:
-        if t == 'Woman': 
-            woman_coords = woman_newcoords
-            Client2.envoi2(woman_coords)
-            Serveur2.sc.recv(1024)
-        if t == 'Man':
-            man_coords = man_newcoords
-            Serveur2.envoi(man_coords)
-            Client2.Clientsock.recv(1024)
-        #snake_coords = snake_newcoords
+        woman_coords = woman_newcoords
+        man_coords = man_newcoords
+        snake_coords = snake_newcoords
         woman_move = [ 0, 0 ]
         man_move = [ 0, 0 ]
-        #snake_move = [ 0, 0 ]
+        snake_move = [ 0, 0 ]
 
         #print("woman at %u,%u to %u,%u" % (woman_coords[0], woman_coords[1], woman_newcoords[0], woman_newcoords[1]))
         #print("man at %u,%u to %u,%u" % (man_coords[0], man_coords[1], man_newcoords[0], man_newcoords[1]))
