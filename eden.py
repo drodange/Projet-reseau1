@@ -290,10 +290,17 @@ while True:
 
         # Display moving items
     blit(apple, apple_coords)
-
-    #blit(woman_ghost, woman_newcoords)
+    if t == 'Woman':
+        blit(woman_ghost, woman_newcoords)
+        data = pickle.dumps(blit(woman_ghost, woman_newcoords)
+        Client2.Clientsock.send(data)
+        pickle.loads(Client2.Clientsock.recv(1024))
     blit(woman, woman_coords)
-    #blit(man_ghost, man_newcoords)
+    if t == 'Man':
+        blit(man_ghost, man_newcoords)
+        data = pickle.dumps(blit(man_ghost, man_newcoords))
+        Serveur2.sc.send(data)
+        pickle.loads(Serveur2.sc.recv(1024))
     blit(man, man_coords)
 
     blit(snake_ghost, snake_newcoords)
