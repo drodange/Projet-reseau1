@@ -14,7 +14,7 @@ def debut():
     Serveur.setsockopt (socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     Serveur.bind (("127.0.0.1" , 7777 )) 
     Serveur.listen(5)
-    Serveur.settimeout(10)
+    Serveur.settimeout(20)
     print("En attente de client")
     global listeclient
     global sc
