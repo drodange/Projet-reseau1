@@ -221,21 +221,6 @@ while True:
         return [ coords[0] + move[0], coords[1] + move[1] ]
 
         # Compute moves
-    if t == 'Woman':
-        woman_newcoords = move(woman_coords, woman_move)
-        data = pickle.dumps(woman_newcoords)
-        Client2.Clientsock.send(data)
-        time.sleep(5)
-        y = pickle.loads(Serveur2.sc.recv(1024))
-        print(y)
-    if t == 'Man':
-        man_newcoords = move(man_coords, man_move)
-        data = pickle.dumps(man_newcoords)
-        Serveur2.sc.send(data)
-        time.sleep(5)
-        y = pickle.loads(Client2.Clientsock.recv(1024))
-        print(y)
-    snake_newcoords = move(snake_coords, snake_move)
 
         # But bound to window
     def bound(newcoords, coords, move):
@@ -278,12 +263,8 @@ while True:
         woman_move = [ 0, 0 ]
         man_move = [ 0, 0 ]
         snake_move = [ 0, 0 ]
-
-        #print("woman at %u,%u to %u,%u" % (woman_coords[0], woman_coords[1], woman_newcoords[0], woman_newcoords[1]))
-        #print("man at %u,%u to %u,%u" % (man_coords[0], man_coords[1], man_newcoords[0], man_newcoords[1]))
-        #print("snake at %u,%u to %u,%u" % (snake_coords[0], snake_coords[1], snake_newcoords[0], snake_newcoords[1]))
-
-        # Display everything
+        
+        
     screen.fill(grass)
 
     def blit(item, coords):
@@ -305,6 +286,29 @@ while True:
 
     blit(snake_ghost, snake_newcoords)
     blit(snake, snake_coords)
+        
+    if t == 'Woman':
+        woman_newcoords = move(woman_coords, woman_move)
+        data = pickle.dumps(woman_newcoords)
+        Client2.Clientsock.send(data)
+        time.sleep(5)
+        y = pickle.loads(Serveur2.sc.recv(1024))
+        print(y)
+    if t == 'Man':
+        man_newcoords = move(man_coords, man_move)
+        data = pickle.dumps(man_newcoords)
+        Serveur2.sc.send(data)
+        time.sleep(5)
+        y = pickle.loads(Client2.Clientsock.recv(1024))
+        print(y)
+    snake_newcoords = move(snake_coords, snake_move)
+
+        #print("woman at %u,%u to %u,%u" % (woman_coords[0], woman_coords[1], woman_newcoords[0], woman_newcoords[1]))
+        #print("man at %u,%u to %u,%u" % (man_coords[0], man_coords[1], man_newcoords[0], man_newcoords[1]))
+        #print("snake at %u,%u to %u,%u" % (snake_coords[0], snake_coords[1], snake_newcoords[0], snake_newcoords[1]))
+
+        # Display everything
+
 
         # Show new state
     pygame.display.flip()
