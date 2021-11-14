@@ -223,7 +223,7 @@ while True:
     if t == 'Woman':
         woman_newcoords = move(woman_coords, woman_move)
         data = pickle.dumps(woman_newcoords)
-        Client2.Cliensock.send(data)
+        Client2.Clientsock.send(data)
         y = pickle.loads(Serveur2.sc.recv(1024))
         print(y)
     if t == 'Man':
