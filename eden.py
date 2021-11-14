@@ -64,45 +64,41 @@ def main():
     global map
     global t
     while True:
-        #Choix du mode de jeu, le premier joueur doit forcément être serveur.
         mode = input ("Quel mode : Serveur, Client\n")
-        #Si on choisit Serveur ou Client, le while se break et on passe à la suite.
         if mode == 'Serveur' or 'Client':
             break
-        #Si on ne choisit ni Serveur ni Client , le jeu ne se lance pas et le programme s'arrête.
         else:
             print("Mode invalide")
             sys.exit()
-
-    #Coté serveur
+    
     if mode == 'Serveur':
-        Serveur2.debut() #On lance la socket serveur avec le programme contenu dans Serveur2.
-        y = str(Serveur2.choixmap()) #Le serveur choisit la map.
+        Serveur2.debut() 
+        y = str(Serveur2.choixmap()) 
         if y == "map1" : 
             map = map1
         if y == "map2" :
             map = map2
         if y == "map3" :
             map = map3
-        Serveur2.envoi(y) #Le serveur envoie la map au client.
-        time.sleep(10) #Le serveur se met en "attente" de recevoir la liste des personnages restants.
+        Serveur2.envoi(y) 
+        time.sleep(10) 
         msg = Serveur2.sc.recv(1024)
         x = msg.decode()
-        t = input("Quel personnage : %s" %x ) #On stocke le résultat de l'input dans une variable utilisée après.
+        t = input("Quel personnage : %s" %x ) 
     
     #Coté Client
     if mode == 'Client':
-        Client2.debut() #On connecte une socket cliente au serveur précédemment 
-        time.sleep(10) #On met le client en attente du choix de la map
-        msg = Client2.Clientsock.recv(1024) #On reçoit la map sous forme encodée
-        #Ici on analyse le message décodé et on le compare pour pouvoir affecter la bonne map.
+        Client2.debut() 
+        time.sleep(10) 
+        msg = Client2.Clientsock.recv(1024) 
+        
         if msg.decode() == "map1" : 
             map = map1
         if msg.decode() == "map2" :
             map = map2
         if msg.decode() == "map3" :
             map = map3
-        x = Client2.choixperso()  #On lance le choix du personnage en premier chez le client avec la fonction choixperso de Client2.
+        x = Client2.choixperso()  
         t = x[0] # On récupère le personnage que le client à choisit ( la valeur de p dans le return )
         x2 = x[1] # On affecte à x2 la deuxième partie de x ( les personnages restants )
         Client2.envoi2(str(x2)) # On envoie la liste des personnages restants 
