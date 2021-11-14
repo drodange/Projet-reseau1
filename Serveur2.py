@@ -24,7 +24,8 @@ def debut():
             actions = False
             sc, addr = Serveur.accept()
             print("New Client", addr)
-            
+            if sc == Serveur:
+                listeclient.append(sc)
                     
  
 def envoi(data): 
