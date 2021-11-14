@@ -257,15 +257,7 @@ while True:
         man_newcoords = man_coords
         man_move = [ 0, 0 ]
 
-        # Make everybody move when everybody chose her/his direction
-    if woman_move != [ 0, 0 ] and man_move != [ 0, 0 ]: # and snake_move != [ 0, 0 ]:
-        woman_coords = woman_newcoords
-        man_coords = man_newcoords
-        snake_coords = snake_newcoords
-        woman_move = [ 0, 0 ]
-        man_move = [ 0, 0 ]
-        snake_move = [ 0, 0 ]
-        
+
         
     screen.fill(grass)
 
@@ -307,6 +299,16 @@ while True:
         # Show new state
     pygame.display.flip()
 
+        # Make everybody move when everybody chose her/his direction
+    if woman_move != [ 0, 0 ] and man_move != [ 0, 0 ]: # and snake_move != [ 0, 0 ]:
+        woman_coords = woman_newcoords
+        man_coords = man_newcoords
+        snake_coords = snake_newcoords
+        woman_move = [ 0, 0 ]
+        man_move = [ 0, 0 ]
+        snake_move = [ 0, 0 ]
+        
+    
     if woman_coords == apple_coords:
         print("woman won!\n")
         sys.exit()
