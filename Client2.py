@@ -20,7 +20,7 @@ def envoi2(data):
 
 #Fonction pour le choix des personnages.
 def choixperso():
-    p = input("Quel personnage : Woman , Man , Snake ?")
+    p = input("Quel personnage : Woman , Man , Snake ?\n")
     for i in persos:
         if p == i:
             persos.remove(p) #On enlève le personnage choisi par le client.
