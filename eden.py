@@ -81,8 +81,7 @@ def main():
             map = map2
         if y == "map3" :
             map = map3
-        Serveur2.envoi(y) 
-        time.sleep(10) 
+        Serveur2.envoi(y)  
         msg = Serveur2.sc.recv(1024)
         x = msg.decode()
         t = input("Quel personnage : %s\n" %x ) 
@@ -103,7 +102,6 @@ def main():
         t = x[0] # On récupère le personnage que le client à choisit ( la valeur de p dans le return )
         x2 = x[1] # On affecte à x2 la deuxième partie de x ( les personnages restants )
         Client2.envoi2(str(x2)) # On envoie la liste des personnages restants 
-        time.sleep(10)
 main()
 
 
