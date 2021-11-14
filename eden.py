@@ -103,6 +103,7 @@ def main():
         t = x[0] # On récupère le personnage que le client à choisit ( la valeur de p dans le return )
         x2 = x[1] # On affecte à x2 la deuxième partie de x ( les personnages restants )
         Client2.envoi2(str(x2)) # On envoie la liste des personnages restants 
+        time.sleep(10)
 main()
 
 
@@ -220,8 +221,20 @@ while True:
         return [ coords[0] + move[0], coords[1] + move[1] ]
 
         # Compute moves
-    woman_newcoords = move(woman_coords, woman_move)
-    man_newcoords = move(man_coords, man_move)
+    if t == 'Woman':
+        woman_newcoords = move(woman_coords, woman_move)
+        data = pickle.dumps(woman_newcoords)
+        Client2.Clientsock.send(data)
+        time.sleep(5)
+        y = pickle.loads(Serveur2.sc.recv(1024))
+        print(y)
+    if t == 'Man':
+        man_newcoords = move(man_coords, man_move)
+        data = pickle.dumps(man_newcoords)
+        Serveur2.sc.send(data)
+        time.sleep(5)
+        y = pickle.loads(Client2.Clientsock.recv(1024))
+        print(y)
     snake_newcoords = move(snake_coords, snake_move)
 
         # But bound to window
