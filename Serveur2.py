@@ -14,6 +14,7 @@ def debut():
     Serveur.setsockopt (socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     Serveur.bind (("127.0.0.1" , 7777 )) 
     Serveur.listen(5)
+    Serveur.settimeout(20)
     print("En attente de client")
     global listeclient
     global sc
@@ -26,23 +27,15 @@ def debut():
             print("New Client", addr)
             if i == Serveur:
                 listeclient.append(sc)
-            elif actions == False:
-                break
-            else:
-                msg = sc.recv (1024)
                     
-                if msg == b'':
-                    listeclient.remove (sc)
-                    sc.close ()
-
+ 
+def envoi(data): 
+    sc.send(data.encode())
 
 
 def choixmap():
-    m=input("Quel map : map1 , map2 , map3 ?")
+    m=input("Quel map : map1 , map2 , map3 ?\n")
     return m
-    
-
-
 
 
 
