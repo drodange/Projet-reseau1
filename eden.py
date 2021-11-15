@@ -364,7 +364,8 @@ while True:
 
         # Display moving items
     blit(apple, apple_coords)
-
+    blit(cherry1, cherry1_coords)
+    blit(cherry2, cherry2_coords)
     blit(woman_ghost, woman_newcoords)
     blit(woman, woman_coords)
     blit(man_ghost, man_newcoords)
