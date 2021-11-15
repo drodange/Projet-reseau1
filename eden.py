@@ -138,6 +138,12 @@ stone_coords = [ 0, 0 ]
 apple = pygame.image.load("image/apple.png")
 apple_coords = [ 0, 0 ]
 
+cherry1 = pygame.image.load("image/cherry.png")
+cherry1_coords = [ 0, 0 ]
+
+cherry2 = pygame.image.load("image/cherry.png")
+cherry2_coords = [ 0, 0 ]
+
 woman_move = [ 0, 0 ]
 man_move = [ 0, 0 ]
 snake_move = [ 0, 0 ]
@@ -157,6 +163,8 @@ def init():
     find(man_coords, 'M')
     find(snake_coords, 'S')
     find(apple_coords, 'A')
+    find(cherry1_coords, 'C1')
+    find(cherry2_coords, 'C2')   
 
 init()
 
