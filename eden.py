@@ -28,7 +28,7 @@ import sys
 import pygame
 #import time
 import Client2
-import Serveur20
+import Serveur2
 import pickle
 
 map = None
