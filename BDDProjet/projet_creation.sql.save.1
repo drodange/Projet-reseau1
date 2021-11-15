@@ -1,0 +1,49 @@
+CREATE SCHEMA Projet;
+SET search_path TO Projet, public;
+CREATE TABLE Projet.Adherents (
+	matricule serial NOT NULL,
+	nom text NOT NULL,
+	prenom text NOT NULL,
+	admin boolean,
+	conferencier boolean,
+	auditeurs boolean,
+	PRIMARY KEY (matricule)
+);
+CREATE TABLE Projet.Conference (
+	num_conf serial NOT NULL,
+	theme text NOT NULL,
+	matricule serial NOT NULL,
+	prix_conf integer NOT NULL,
+	PRIMARY KEY (num_conf),
+	FOREIGN KEY (matricule) REFERENCES Projet.Adherents(matricule)
+);
+CREATE TABLE Projet.Amphi (
+	num_amphi serial NOT NULL,
+	nb_place integer NOT NULL,
+	/*emplacement text NOT NULL,*/
+	num_conf serial NOT NULL,
+	cout_exploit integer NOT NULL,
+	PRIMARY KEY (num_amphi),
+
+);
+CREATE TABLE Projet.Compta (
+	prix_conf integer NOT NULL,
+	cout_total integer NOT NULL,
+	indeminite integer NOT NULL,
+	cout_exploit integer NOT NULL,
+	num_amphi serial NOT NULL,
+	PRIMARY KEY (prix_conf),
+	FOREIGN KEY (num_amphi) REFERENCES Projet.Amphi(num_amphi),
+	FOREIGN KEY (cout_exploit) REFERENCES Projet.Amphi(cout_exploit)
+);
+CREATE TABLE Projet.Programme (
+	num_conf serial NOT NULL,
+	matricule serial NOT NULL,
+	date_debut date NOT NULL,
+	date_fin date NOT NULL,
+	PRIMARY KEY (date_debut, date_fin),
+	FOREIGN KEY (matricule) REFERENCES Projet.Adherents(matricule),
+	FOREIGN KEY (num_conf) REFERENCES Projet.Conference(num_conf)
+);
+
+

@@ -1,0 +1,44 @@
+CREATE SCHEMA Projet;
+SET search_path TO Projet, public;
+CREATE TABLE Projet.Adherents (
+	admin serial NOT NULL,
+	conferencier text NOT NULL,
+	auditeurs text NOT NULL,
+	PRIMARY KEY (conferencier)
+);
+CREATE TABLE Projet.Conference (
+	num_conf integer NOT NULL,
+	domaine text NOT NULL,
+	conferencier text NOT NULL,
+	prix_conf integer NOT NULL,
+	PRIMARY KEY (num_conference),
+	FOREIGN KEY (conferencier) REFERENCES Projet.Adherents(conferencier)
+);
+CREATE TABLE Projet.Amphi (
+	num_amphi integer NOT NULL CHECK (num_amphi >= 0),
+	nb_place integer NOT NULL CHECK (nb_place >= 0),
+	/*emplacement text NOT NULL,*/
+	num_conf integer NOT NULL CHECK (num_conf >= 0),
+	cout_exploit integer NOT NULL	CHECK (cout_exploit >= 0),
+	PRIMARY KEY (cout_exploit),
+	FOREIGN KEY (num_conf) REFERENCES Projet.Conference(num_conf)
+);
+CREATE TABLE Projet.Compta (
+	prix_conf integer NOT NULL,
+	cout_total integer NOT NULL,
+	indeminite integer NOT NULL,
+	cout_exploit integer NOT NULL
+	PRIMARY KEY (prix_conf),
+	FOREIGN KEY (cout_exploit) REFERENCES Projet.Amphi(cout_exploit)
+);
+CREATE TABLE Projet.Programme (
+	num_conf integer NOT NULL,
+	conferencier text NOT NULL,
+	date_debut date NOT NULL,
+	date_fin date NOT NULL,
+	PRIMARY KEY (date_debut, date_fin),
+	FOREIGN KEY (conferencier) REFERENCES Projet.Adherents(conferencier),
+	FOREIGN KEY (num_conf) REFERENCES Projet.Conference(num_conf)
+);
+
+
