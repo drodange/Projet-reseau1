@@ -388,4 +388,55 @@ while True:
         print("snake won! \n")
         sys.exit()
 
+        #téléportation woman C1-C2
+    elif woman_coords == cherry1_coords:
+        def find(coords, c):
+            for y in range(len(map)):
+                for x in range(len(map[y])):
+                    if map[y][x] == c:
+                        coords[0] = x
+                        coords[1] = y
+                        return
+            raise Exception('oops')
 
+        find(woman_coords, 'C2')
+
+        #téléportation woman C2-C1
+    elif woman_coords == cherry2_coords:
+
+        def find(coords, c):
+            for y in range(len(map)):
+                for x in range(len(map[y])):
+                    if map[y][x] == c:
+                        coords[0] = x
+                        coords[1] = y
+                        return
+            raise Exception('oops')
+
+        find(woman_coords, 'C1')
+
+        #téléportation man C1-C2
+    elif man_coords == cherry1_coords:
+        def find(coords, c):
+            for y in range(len(map)):
+                for x in range(len(map[y])):
+                    if map[y][x] == c:
+                        coords[0] = x
+                        coords[1] = y
+                        return
+            raise Exception('oops')
+
+        find(man_coords, 'C2')
+
+        #téléportation man C2-C1
+    elif man_coords == cherry2_coords:
+        def find(coords, c):
+            for y in range(len(map)):
+                for x in range(len(map[y])):
+                    if map[y][x] == c:
+                        coords[0] = x
+                        coords[1] = y
+                        return
+            raise Exception('oops')
+
+        find(man_coords, 'C1')
