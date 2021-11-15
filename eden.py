@@ -26,13 +26,14 @@
 
 import sys
 import pygame
-import time
+#import time
 import Client2
-import Serveur2
+import Serveur20
 import pickle
 
 map = None
-t = None
+t1 = None
+t2 = None
 
 map1 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
         [ ' ', 'X', 'X', 'X', 'X', 'X', 'X', ' ', 'X', ' ' ],
@@ -63,7 +64,8 @@ map3 = [ [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
 
 def main():
     global map
-    global t
+    global t1
+    global t2
     while True:
         mode = input ("Quel mode : Serveur, Client\n")
         if mode == 'Serveur' or 'Client':
@@ -84,9 +86,9 @@ def main():
         Serveur2.envoi(y)  
         msg = Serveur2.sc.recv(1024)
         x = msg.decode()
-        t = input("Quel personnage : %s\n" %x ) 
+        t2 = input("Quel personnage : %s\n" %x ) 
     
-    #Coté Client
+    #Coté Clients
     if mode == 'Client':
         Client2.debut() 
         msg = Client2.Clientsock.recv(1024) 
@@ -98,7 +100,7 @@ def main():
         if msg.decode() == "map3" :
             map = map3
         x = Client2.choixperso()  
-        t = x[0] # On récupère le personnage que le client à choisit ( la valeur de p dans le return )
+        t1 = x[0] # On récupère le personnage que le client à choisit ( la valeur de p dans le return )
         x2 = x[1] # On affecte à x2 la deuxième partie de x ( les personnages restants )
         Client2.envoi2(str(x2)) # On envoie la liste des personnages restants 
 main()
@@ -167,7 +169,7 @@ while True:
 
     elif e.type == pygame.KEYDOWN:
     #Ici le t correspond au t défini dans la fonction main() , et on assigne chaque joueur à son personnage.
-        if t == 'Woman': 
+        if t1 == 'Woman': 
     # Check for wowoman movements
             if e.key == pygame.K_z:
                 woman_move = [ 0, -1 ]
@@ -183,9 +185,9 @@ while True:
                 pass
             data = pickle.dumps(woman_move)
             Client2.Clientsock.send(data)
-            man_move=pickle.loads(Client2.Clientsock.recv(1024))
-        
-        if t == 'Man':
+            man_move=pickle.loads(Client2.Clientsock.recv(512))
+
+        if t2 == 'Man':
             # Check for man movements    
             if e.key == pygame.K_UP:
                 man_move = [ 0, -1 ]
@@ -201,9 +203,47 @@ while True:
                 pass
             data = pickle.dumps(man_move)
             Serveur2.sc.send(data)
-            woman_move=pickle.loads(Serveur2.sc.recv(1024))
-            
-        if t == 'Snake':
+            woman_move = pickle.loads(Serveur2.sc.recv(512))    
+
+        if t2 == 'Woman': 
+    # Check for wowoman movements
+            if e.key == pygame.K_z:
+                woman_move = [ 0, -1 ]
+                pass
+            elif e.key == pygame.K_s:
+                woman_move = [ 0, 1 ]
+                pass
+            elif e.key == pygame.K_q:
+                woman_move = [ -1, 0 ]
+                pass
+            elif e.key == pygame.K_d:
+                woman_move = [ 1, 0 ]
+                pass
+            data = pickle.dumps(woman_move)
+            Serveur2.sc.send(data)
+            man_move=pickle.loads(Serveur2.sc.recv(512))
+        
+        if t1 == 'Man':
+            # Check for man movements    
+            if e.key == pygame.K_UP:
+                man_move = [ 0, -1 ]
+                pass
+            elif e.key == pygame.K_DOWN:
+                man_move = [ 0, 1 ]
+                pass
+            elif e.key == pygame.K_LEFT:
+                man_move = [ -1, 0 ]
+                pass
+            elif e.key == pygame.K_RIGHT:
+                man_move = [ 1, 0 ]
+                pass
+            data = pickle.dumps(man_move)
+            Client2.Clientsock.send(data)
+            woman_move = pickle.loads(Client2.Clientsock.recv(512))
+        
+        
+        #Cas ou le serpent joue avec juste l'homme , à adapter dans la gestion de tout le monde bouge en même temps    
+        if t1 == 'Snake':
             #Snake move
             if e.key == pygame.K_o:
                 snake_move = [ 0, -1 ]
@@ -217,6 +257,27 @@ while True:
             elif e.key == pygame.K_m:
                 snake_move = [ 1, 0 ]
                 pass
+            data = pickle.dumps(man_move)
+            Client2.Clientsock.send(data)
+            man_move = pickle.loads(Client2.Clientsock.recv(512))
+
+        if t2 == 'Snake':
+            #Snake move
+            if e.key == pygame.K_o:
+                snake_move = [ 0, -1 ]
+                pass
+            elif e.key == pygame.K_l:
+                snake_move = [ 0, 1 ]
+                pass
+            elif e.key == pygame.K_k:
+                snake_move = [ -1, 0 ]
+                pass
+            elif e.key == pygame.K_m:
+                snake_move = [ 1, 0 ]
+                pass
+            data = pickle.dumps(man_move)
+            Serveur2.sc.send(data)
+            man_move = pickle.loads(Serveur2.sc.recv(512))
 
         #else:
         #    print(e)
