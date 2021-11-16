@@ -99,6 +99,7 @@ def main():
             map = map2
         if msg.decode() == "map3" :
             map = map3
+        print("La map sera : " , msg.decode() ) 
         x = Client2.choixperso()  
         t1 = x[0] # On récupère le personnage que le client à choisit ( la valeur de p dans le return )
         x2 = x[1] # On affecte à x2 la deuxième partie de x ( les personnages restants )
