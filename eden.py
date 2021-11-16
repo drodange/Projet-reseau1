@@ -68,7 +68,7 @@ def main():
     global t2
     while True:
         mode = input ("Quel mode : Serveur, Client\n")
-        if mode == 'Serveur' or 'Client':
+        if mode == "Serveur" or "Client":
             break
         else:
             print("Mode invalide")
